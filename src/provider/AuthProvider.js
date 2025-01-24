@@ -1,35 +1,45 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { KindeProvider, useKindeAuth } from "@kinde-oss/kinde-auth-nextjs";
+import axios from "axios";
 
-const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
-export function AuthProvider({ children }) {
-    const [user, setUser] = useState(null);
+export const AuthProvider = ({ children }) => {
+    const [loading, setLoading] = useState(true);
+    const { isAuthenticated, user, login, logout, signup } = useKindeAuth();
 
-    const login = async ({ email, password }) => {
-        if (email === "rima@gmail.com" && password === "password123") {
-            setUser({ email, name: "Rima Akter" });
-            return true;
-        } else {
-            throw new Error("Invalid credentials");
-        }
-    };
+    useEffect(() => {
+        const handleAuthStateChange = async () => {
+            setLoading(true);
 
-    const setProfile = async (profile) => {
-        setUser((prev) => ({ ...prev, ...profile }));
-        console.log("Profile updated:", profile);
-    };
+            if (isAuthenticated) {
+                console.log("User logged in:", user);
+            } else {
+                console.log("User logged out");
+            }
 
-    const logout = () => {
-        setUser(null);
+            setLoading(false);
+        };
+
+        handleAuthStateChange();
+    }, [isAuthenticated, user]);
+
+    const authInfo = {
+        user,
+        loading,
+        login,
+        signup, // Redirects user to Kinde signup page
+        logout, // Logs the user out from Kinde
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, setProfile, logout }}>
-            {children}
+        <AuthContext.Provider value={authInfo}>
+            {loading ? <p>Loading...</p> : children}
         </AuthContext.Provider>
     );
-}
+};
 
-export function useAuth() {
-    return useContext(AuthContext);
-}
+
+
+// Hook to Use Auth
+export const useAuth = () => useContext(AuthContext);

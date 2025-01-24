@@ -10,7 +10,7 @@ export default function Profile() {
 
     useEffect(() => {
         if (!user) {
-            router.push("/login");
+            router.push("/api/auth/login");
         }
     }, [user, router]);
 

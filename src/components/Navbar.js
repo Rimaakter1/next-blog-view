@@ -1,8 +1,6 @@
-import { useAuth } from "@/provider/AuthProvider";
 import Link from "next/link";
 
-export default function NavBar() {
-    const { user, logout } = useAuth();
+export const NavBar = async () => {
     return (
         <nav className="navbar w-10/12 mx-auto text-white p-4 shadow-lg">
             <div className="navbar-start">
@@ -34,12 +32,21 @@ export default function NavBar() {
                         Logout
                     </button>
                 ) : (
-                    <Link
-                        href='/login'
-                        className="btn bg-blue-600 btn-sm text-white px-6 rounded-full shadow-md hover:bg-blue-700"
-                    >
-                        Login
-                    </Link>
+                    <div>
+                        <Link
+                            href='/api/auth/login'
+                            className="btn bg-blue-600 btn-sm text-white px-6 rounded-full shadow-md hover:bg-blue-700"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            href='/api/auth/register'
+                            className="btn bg-blue-600 btn-sm text-white px-6 rounded-full shadow-md hover:bg-blue-700"
+                        >
+                            Resgister
+                        </Link>
+                    </div>
+
                 )}
             </div>
 
@@ -82,9 +89,14 @@ export default function NavBar() {
                                 Logout
                             </button>
                         ) : (
-                            <Link href="/login" className="btn btn-success btn-sm text-white px-6 rounded-full w-full">
-                                Login
-                            </Link>
+                            <div>
+                                <Link href="/api/auth/login" className="btn btn-success btn-sm text-white px-6 rounded-full w-full">
+                                    Login
+                                </Link>
+                                <Link href="/api/auth/register" className="btn btn-success btn-sm text-white px-6 rounded-full w-full">
+                                    Resgister
+                                </Link>
+                            </div>
                         )}
                     </li>
                 </ul>
