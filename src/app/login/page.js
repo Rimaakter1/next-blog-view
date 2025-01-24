@@ -35,7 +35,7 @@ export default function Login() {
                             type="email"
                             name="email"
                             required
-                            className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none bg-white focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -45,7 +45,7 @@ export default function Login() {
                             type="password"
                             name="password"
                             required
-                            className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="mt-2 w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
