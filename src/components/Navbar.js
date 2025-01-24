@@ -24,30 +24,23 @@ export const NavBar = async () => {
             </div>
 
             <div className="navbar-end hidden lg:flex">
-                {user ? (
-                    <button
-                        onClick={logout}
-                        className="btn btn-error btn-sm text-white px-6 rounded-full shadow-md hover:bg-red-700"
-                    >
-                        Logout
-                    </button>
-                ) : (
-                    <div>
-                        <Link
-                            href='/api/auth/login'
-                            className="btn bg-blue-600 btn-sm text-white px-6 rounded-full shadow-md hover:bg-blue-700"
-                        >
-                            Login
-                        </Link>
-                        <Link
-                            href='/api/auth/register'
-                            className="btn bg-blue-600 btn-sm text-white px-6 rounded-full shadow-md hover:bg-blue-700"
-                        >
-                            Resgister
-                        </Link>
-                    </div>
 
-                )}
+                <div>
+                    <Link
+                        href='/api/auth/login'
+                        className="btn bg-blue-600 btn-sm text-white px-6 rounded-full shadow-md hover:bg-blue-700"
+                    >
+                        Login
+                    </Link>
+                    <Link
+                        href='/api/auth/register'
+                        className="btn bg-blue-600 btn-sm text-white px-6 rounded-full shadow-md hover:bg-blue-700"
+                    >
+                        Resgister
+                    </Link>
+                </div>
+
+
             </div>
 
             <div className="dropdown navbar-end lg:hidden">
@@ -81,23 +74,16 @@ export const NavBar = async () => {
                         </Link>
                     </li>
                     <li>
-                        {user ? (
-                            <button
-                                onClick={logout}
-                                className="btn btn-error btn-sm text-white px-6 rounded-full hover:bg-red-700 w-full"
-                            >
-                                Logout
-                            </button>
-                        ) : (
-                            <div>
-                                <Link href="/api/auth/login" className="btn btn-success btn-sm text-white px-6 rounded-full w-full">
-                                    Login
-                                </Link>
-                                <Link href="/api/auth/register" className="btn btn-success btn-sm text-white px-6 rounded-full w-full">
-                                    Resgister
-                                </Link>
-                            </div>
-                        )}
+
+                        <div>
+                            <Link href="/api/auth/login" className="btn btn-success btn-sm text-white px-6 rounded-full w-full">
+                                Login
+                            </Link>
+                            <Link href="/api/auth/register" className="btn btn-success btn-sm text-white px-6 rounded-full w-full">
+                                Resgister
+                            </Link>
+                        </div>
+
                     </li>
                 </ul>
             </div>
